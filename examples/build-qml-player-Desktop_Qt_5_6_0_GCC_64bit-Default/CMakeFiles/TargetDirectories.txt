@@ -1,0 +1,3 @@
+/home/jacob/School/Human Computer Interaction/Project/examples/build-qml-player-Desktop_Qt_5_6_0_GCC_64bit-Default/CMakeFiles/uninstall.dir
+/home/jacob/School/Human Computer Interaction/Project/examples/build-qml-player-Desktop_Qt_5_6_0_GCC_64bit-Default/src/CMakeFiles/qml-player_automoc.dir
+/home/jacob/School/Human Computer Interaction/Project/examples/build-qml-player-Desktop_Qt_5_6_0_GCC_64bit-Default/src/CMakeFiles/qml-player.dir

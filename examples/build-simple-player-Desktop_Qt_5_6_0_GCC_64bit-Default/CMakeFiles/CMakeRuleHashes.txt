@@ -1,0 +1,3 @@
+# Hashes of file build rules.
+ec1fb04f9157c50b3484278fe6442378 CMakeFiles/uninstall
+f3f7dd6eef28235277d5690df15e2686 src/CMakeFiles/simple-player_automoc

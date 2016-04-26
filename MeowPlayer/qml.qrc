@@ -1,0 +1,18 @@
+<RCC>
+    <qresource prefix="/">
+        <file>MainForm.ui.qml</file>
+        <file>main.qml</file>
+    </qresource>
+    <qresource prefix="/images">
+        <file>play_circle_white.svg</file>
+        <file>previous_white.svg</file>
+        <file>next_white.svg</file>
+        <file>menu_white.svg</file>
+        <file>mute_white.svg</file>
+        <file>repeat_white.svg</file>
+        <file>shuffle_white.svg</file>
+        <file>volume_down_white.svg</file>
+        <file>volume_up_white.svg</file>
+        <file>pause_circle_white.svg</file>
+    </qresource>
+</RCC>
