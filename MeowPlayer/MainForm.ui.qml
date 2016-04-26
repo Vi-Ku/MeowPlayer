@@ -49,7 +49,7 @@ Item {
                 anchors.leftMargin: 0
                 anchors.topMargin: 0
                 anchors.fill: parent
-                url: "file://media/jacob/Data/Movies/Ant.Man.2015.HDRip.XviD-ETRG.avi"
+                url: "file://home/soro/dwhelper/Common - I Used To Love H.E.R.mp4"
             }
         }
     }
@@ -205,47 +205,52 @@ Item {
                 }
             }
         }
-        RowLayout {
-            id: volumeControlsLayout
-            anchors.horizontalCenter: parent.horizontalCenter
+        Rectangle {
             anchors.left: centeredControlsLayout.right
+            anchors.right: parent.right
+            anchors.top: parent.top
+            color: "transparent"
             anchors.bottom: parent.bottom
-            height: 24
-            anchors.bottomMargin: 12
-            anchors.leftMargin: 20
-            anchors.rightMargin: 20
-            MouseArea {
-                id: muteMouseArea
-                width: 24
+            RowLayout {
+                id: volumeControlsLayout
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.bottom: parent.bottom
                 height: 24
-                cursorShape: Qt.PointingHandCursor
-                Image {
-                    id: muteImage
-                    fillMode: Image.PreserveAspectFit
-                    sourceSize.height: 24
-                    sourceSize.width: 24
-                    source: "images/mute_white.svg"
-                    anchors.fill: parent
-                }
-            }
-            Slider {
-                id: volumeSlider
-                width: 100
-                height: 24
-                minimumValue: 0
-                maximumValue: 125
-                style: SliderStyle {
-                    groove: Rectangle {
-                        implicitHeight: 4
-                        color: "white"
-                        radius: 4
+                width: 124
+                anchors.bottomMargin: 12
+                MouseArea {
+                    id: muteMouseArea
+                    width: 24
+                    height: 24
+                    cursorShape: Qt.PointingHandCursor
+                    Image {
+                        id: muteImage
+                        fillMode: Image.PreserveAspectFit
+                        sourceSize.height: 24
+                        sourceSize.width: 24
+                        source: "images/mute_white.svg"
+                        anchors.fill: parent
                     }
-                    handle: Rectangle {
-                        anchors.centerIn: parent
-                        color: control.pressed ? "lightgray" : "white"
-                        implicitWidth: 12
-                        implicitHeight: 12
-                        radius: 12
+                }
+                Slider {
+                    id: volumeSlider
+                    width: 100
+                    height: 24
+                    minimumValue: 0
+                    maximumValue: 125
+                    style: SliderStyle {
+                        groove: Rectangle {
+                            implicitHeight: 4
+                            color: "white"
+                            radius: 4
+                        }
+                        handle: Rectangle {
+                            anchors.centerIn: parent
+                            color: control.pressed ? "lightgray" : "white"
+                            implicitWidth: 12
+                            implicitHeight: 12
+                            radius: 12
+                        }
                     }
                 }
             }
@@ -260,6 +265,7 @@ Item {
         anchors.top: navigationRectangle.bottom
         anchors.right: parent.right
         visible: false
+        onVisibleChanged: mainMenuContainerShadow.visible = visible;
         Rectangle {
             id: openLocalMenuItem
             x: 0
@@ -282,5 +288,18 @@ Item {
                 }
             }
         }
+    }
+
+    DropShadow {
+        id: mainMenuContainerShadow
+        anchors.fill: mainMenuContainer
+        cached: true
+        horizontalOffset: 3
+        verticalOffset: 3
+        radius: 10.0
+        samples: 16
+        visible: false
+        color: "#ff000000"
+        source: mainMenuContainer
     }
 }

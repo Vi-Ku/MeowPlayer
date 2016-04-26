@@ -102,6 +102,12 @@ ApplicationWindow {
                 mediaSubtitleText.text = "";
                 mediaTitleText.text = "No Media";
                 break;
+            case Vlc.Ended:
+                playPauseImage.source = "images/play_circle_white.svg";
+                window.title = "MeowPlayer";
+                mediaSubtitleText.text = "";
+                mediaTitleText.text = "No Media";
+                break;
             }
         }
 
