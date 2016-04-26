@@ -17,8 +17,14 @@ Item {
     property alias seekPositionText : seekPositionText
     property alias seekLengthText : seekLengthText
     property alias menuMouseArea : menuMouseArea
+    property alias mainMenuContainer : mainMenuContainer
     property alias mediaTitleText : mediaTitleText
     property alias mediaSubtitleText : mediaSubtitleText
+    property alias openLocalMenuItem : openLocalMenuItem
+    property alias openLocalMenuItemMouseArea : openLocalMenuItemMouseArea
+    property alias volumeSlider : volumeSlider
+    property alias muteMouseArea : muteMouseArea
+    property alias muteImage : muteImage
 
     Rectangle {
         id: vlcPlayerContainer
@@ -199,6 +205,51 @@ Item {
                 }
             }
         }
+        RowLayout {
+            id: volumeControlsLayout
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.left: centeredControlsLayout.right
+            anchors.bottom: parent.bottom
+            height: 24
+            anchors.bottomMargin: 12
+            anchors.leftMargin: 20
+            anchors.rightMargin: 20
+            MouseArea {
+                id: muteMouseArea
+                width: 24
+                height: 24
+                cursorShape: Qt.PointingHandCursor
+                Image {
+                    id: muteImage
+                    fillMode: Image.PreserveAspectFit
+                    sourceSize.height: 24
+                    sourceSize.width: 24
+                    source: "images/mute_white.svg"
+                    anchors.fill: parent
+                }
+            }
+            Slider {
+                id: volumeSlider
+                width: 100
+                height: 24
+                minimumValue: 0
+                maximumValue: 125
+                style: SliderStyle {
+                    groove: Rectangle {
+                        implicitHeight: 4
+                        color: "white"
+                        radius: 4
+                    }
+                    handle: Rectangle {
+                        anchors.centerIn: parent
+                        color: control.pressed ? "lightgray" : "white"
+                        implicitWidth: 12
+                        implicitHeight: 12
+                        radius: 12
+                    }
+                }
+            }
+        }
     }
 
     Rectangle {
@@ -208,19 +259,23 @@ Item {
         color: "#ffffff"
         anchors.top: navigationRectangle.bottom
         anchors.right: parent.right
-
+        visible: false
         Rectangle {
             id: openLocalMenuItem
-            anchors.right: parent.right
-            anchors.left: parent.left
             x: 0
             y: 0
+            height: 36
+            width: parent.width
             MouseArea {
                 id: openLocalMenuItemMouseArea
                 anchors.fill: parent
                 cursorShape: Qt.PointingHandCursor
-                anchors.margins: 10
+                onEntered: openLocalMenuItem.color = "lightgray"
+                onExited: openLocalMenuItem.color = "transparent"
+                onClicked: mainMenuContainer.visible = false
+                hoverEnabled: true
                 Text {
+                    anchors.margins: 10
                     id: openLocalMenuItemText
                     anchors.fill: parent
                     text: "Open Local Media"

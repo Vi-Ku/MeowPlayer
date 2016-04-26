@@ -6,9 +6,5 @@ MeowPlayerProcess::MeowPlayerProcess(QQmlContext *gui, QObject *parent) : QObjec
 }
 
 void MeowPlayerProcess::vlcStateChanged() {
-    switch ((Vlc::State)_player->state()) {
-    case Vlc::Playing:
-        qDebug() << "Playing";
-        break;
-    }
+
 }

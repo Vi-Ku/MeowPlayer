@@ -20,7 +20,8 @@ int main(int argc, char *argv[]) {
     QQmlApplicationEngine engine;
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
 
-    MeowPlayerProcess process(engine.rootContext());
+    //MeowPlayerProcess process(engine.rootContext());
+    //engine.root
 
     return app.exec();
 }

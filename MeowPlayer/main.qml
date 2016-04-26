@@ -14,6 +14,8 @@ ApplicationWindow {
 
     property alias vlcPlayer: mainForm.vlcPlayer
 
+    signal localFileChosen(var files);
+
     /* Formats a millisecond timestamp into a minute and second formatted string
       */
     function formatMillisecondTime(millis) {
@@ -49,7 +51,33 @@ ApplicationWindow {
         property bool ignoreNextSeekUpdate: false
 
         menuMouseArea.onClicked: {
+            mainMenuContainer.visible = !mainMenuContainer.visible;
+        }
 
+        openLocalMenuItemMouseArea.onClicked: {
+            fileDialog.open();
+        }
+
+        volumeSlider.onValueChanged: {
+            vlcPlayer.volume = volumeSlider.value;
+            if (volumeSlider.value == 0) {
+                muteImage.source = "images/mute_white.svg"
+            }
+            else if (volumeSlider.value < 50) {
+                muteImage.source = "images/volume_down_white.svg"
+            }
+            else {
+                muteImage.source = "images/volume_up_white.svg"
+            }
+        }
+
+        muteMouseArea.onClicked:  {
+            if (volumeSlider.value == 0) {
+                volumeSlider.value = 50;
+            }
+            else {
+                volumeSlider.value = 0;
+            }
         }
 
         //listener for player state change event
@@ -126,6 +154,16 @@ ApplicationWindow {
         function show(caption) {
             messageDialog.text = caption;
             messageDialog.open();
+        }
+    }
+
+    FileDialog {
+        id: fileDialog
+        title: "Open file"
+        folder: shortcuts.home
+
+        onAccepted: {
+            localFileChosen(fileUrls);
         }
     }
 }
